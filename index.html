@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KUZHI.AI — Circularity Intelligence</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Baloo+2:wght@500;600;700;800&family=Caveat:wght@500;600;700&family=Architects+Daughter&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =====================================================
+     LANDING PAGE
+===================================================== -->
+
+<section id="landing">
+
+    <div class="mesh"></div>
+
+    <div class="floaty f1">🍩</div>
+    <div class="floaty f2">🫓</div>
+    <div class="floaty f3">⭕</div>
+    <div class="floaty f4">🥯</div>
+    <div class="floaty f5">🕳️</div>
+    <div class="floaty f6">✨</div>
+
+
+    <div class="hero">
+
+        <div class="eyebrow">
+            CIRCULARITY INTELLIGENCE PLATFORM
+        </div>
+
+        <h1 class="wordmark">
+            KUZHI<span>.</span>AI
+        </h1>
+
+        <p class="tagline">
+            The world's most unnecessarily precise way
+            to measure a hole in your food.
+        </p>
+
+    </div>
+
+
+    <div class="about-card">
+
+        <h2>What even is this?</h2>
+
+        <p>
+            <span class="green">Kuzhi</span>
+            (കുഴി / குழி) simply means
+            <em>"hole"</em> — the small, sacred void in the
+            middle of a vada, an appam, a donut, or any
+            self-respecting fried snack.
+        </p>
+
+        <p>
+            For centuries, humanity has eyeballed these holes
+            and moved on with life.
+        </p>
+
+        <p>
+            <span class="pink">KUZHI.AI</span> refuses to move on.
+            Upload a photo and our engine estimates how round
+            the hole really is, how centered it is, and how
+            symmetrical your specimen looks.
+        </p>
+
+        <p>
+            Built entirely for the glory of the
+            <span class="green">Useless Projects</span> category.
+            No practical value was harmed.
+        </p>
+
+    </div>
+
+
+    <div class="founder-card">
+
+        <h3>A note from the founder's desk</h3>
+
+        <p>
+            We started KUZHI.AI after a long, heated debate
+            over whether one vada's hole was "more round"
+            than another's.
+        </p>
+
+        <p>
+            Science had no answer.
+            So we built one.
+        </p>
+
+        <div class="signature">
+            — Founder, funder.in
+        </div>
+
+    </div>
+
+
+    <div class="cta-area">
+
+        <button class="cta-btn" onclick="enterLab()">
+            Go to the Lab →
+        </button>
+
+        <div class="cta-sub">
+            Upload a photo. Get judged mathematically.
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     LAB
+===================================================== -->
+
+<section id="lab">
+
+    <div class="lab-background"></div>
+
+    <div class="lab-container">
+
+
+        <!-- NAV -->
+
+        <nav class="lab-nav">
+
+            <div class="lab-brand">
+                KUZHI<span>.</span>AI
+                <small>— LAB</small>
+            </div>
+
+            <button
+                class="back-button"
+                onclick="backToLanding()">
+
+                ← Exit
+
+            </button>
+
+        </nav>
+
+
+        <!-- HEADER -->
+
+        <header class="lab-header">
+
+            <div class="lab-tag">
+                CIRCULARITY INSPECTION ENGINE
+            </div>
+
+            <h1>
+                Circularity Inspector
+            </h1>
+
+            <p>
+                Upload a specimen. The engine checks whether
+                a hole actually exists, then estimates its
+                roundness, centering and radial symmetry.
+            </p>
+
+        </header>
+
+
+        <!-- =================================================
+             INPUT
+        ================================================= -->
+
+        <div class="panel">
+
+            <div class="panel-label">
+                01 · SPECIMEN INPUT
+            </div>
+
+
+            <div
+                id="dropzone"
+                class="dropzone">
+
+                <div class="upload-icon">
+                    📸
+                </div>
+
+                <h2>
+                    Tap to upload a photo
+                </h2>
+
+                <p>
+                    or drag your specimen here
+                </p>
+
+                <small>
+                    appam · vada · donut · poori · anything with a hole
+                </small>
+
+                <input
+                    type="file"
+                    id="fileInput"
+                    accept="image/*"
+                >
+
+            </div>
+
+
+            <!-- PREVIEW -->
+
+            <div
+                id="previewWrap"
+                class="preview-wrap">
+
+                <div class="preview-label">
+                    SPECIMEN PREVIEW
+                </div>
+
+                <canvas id="srcCanvas"></canvas>
+
+            </div>
+
+
+            <button
+                id="analyzeBtn"
+                class="run-btn"
+                disabled>
+
+                🔬 Run Circularity Analysis
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             COMPUTATION LOG
+        ================================================= -->
+
+        <div
+            id="computePanel"
+            class="panel compute-panel">
+
+            <div class="panel-label">
+                02 · COMPUTATION LOG
+            </div>
+
+            <div id="logContainer"></div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             NO HOLE
+        ================================================= -->
+
+        <div
+            id="noHolePanel"
+            class="no-hole panel">
+
+            <div class="no-hole-emoji">
+                🤨
+            </div>
+
+            <h2>
+                "hole ulla food item ayyitu
+                vada mwone 😭"
+            </h2>
+
+            <p>
+                No convincing hole was detected in this specimen.
+                Try a vada, donut, appam, or another circular food
+                with a visible opening.
+            </p>
+
+            <button
+                onclick="resetAnalysis()"
+                class="retry-btn">
+
+                Try Another Photo
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             RESULTS
+        ================================================= -->
+
+        <div
+            id="resultsPanel"
+            class="panel results-panel">
+
+            <div class="panel-label">
+                03 · MATHEMATICAL VERDICT
+            </div>
+
+
+            <div class="blackboard">
+
+                <h2>
+                    Kuzhi Symmetry Breakdown
+                </h2>
+
+                <p class="board-sub">
+                    chalked up by the circularity engine
+                </p>
+
+
+                <div class="chalk-row">
+
+                    <span>
+                        Isoperimetric Quotient
+                        <small>Q = 4πA/P²</small>
+                    </span>
+
+                    <strong
+                        id="mCircularity"
+                        class="teal">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="chalk-row">
+
+                    <span>
+                        Centroid Offset
+                        <small>δ = ‖C−O‖/r</small>
+                    </span>
+
+                    <strong
+                        id="mCentroid"
+                        class="gold">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="chalk-row">
+
+                    <span>
+                        Radial Deviation
+                        <small>σ(rᵢ)</small>
+                    </span>
+
+                    <strong
+                        id="mRadial"
+                        class="pink">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="chalk-row">
+
+                    <span>
+                        Coefficient of Variation
+                        <small>σ/r̄</small>
+                    </span>
+
+                    <strong
+                        id="mCV"
+                        class="teal">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="chalk-row">
+
+                    <span>
+                        Estimated Diameter
+                        <small>2r̄</small>
+                    </span>
+
+                    <strong
+                        id="mDiameter"
+                        class="gold">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="chalk-row">
+
+                    <span>
+                        Boundary Samples
+                        <small>n</small>
+                    </span>
+
+                    <strong
+                        id="mSample"
+                        class="pink">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <!-- DIAGRAM -->
+
+                <div class="chalk-diagram">
+
+                    <svg
+                        id="chalkCircle"
+                        viewBox="0 0 200 200">
+
+                        <circle
+                            cx="100"
+                            cy="100"
+                            r="3"
+                            fill="#F3F1E7"/>
+
+                        <path
+                            id="chalkPath"
+                            fill="none"
+                            stroke="#F3F1E7"
+                            stroke-width="2"
+                            stroke-linecap="round"/>
+
+                        <line
+                            x1="85"
+                            y1="100"
+                            x2="115"
+                            y2="100"
+                            stroke="#FF7EB6"/>
+
+                        <line
+                            x1="100"
+                            y1="85"
+                            x2="100"
+                            y2="115"
+                            stroke="#FF7EB6"/>
+
+                    </svg>
+
+                </div>
+
+
+                <!-- SCORE -->
+
+                <div class="score-box">
+
+                    <div class="score-label">
+                        FINAL KUZHI SCORE
+                    </div>
+
+                    <div
+                        id="boardScore"
+                        class="score">
+
+                        0
+
+                    </div>
+
+                    <div
+                        id="boardGrade"
+                        class="grade">
+
+                        —
+
+                    </div>
+
+                </div>
+
+
+                <div class="chalk-tray">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+            </div>
+
+
+            <!-- RESULT IMAGE -->
+
+            <div class="output-wrap">
+
+                <div class="preview-label">
+                    DETECTION OVERLAY
+                </div>
+
+                <canvas id="outCanvas"></canvas>
+
+            </div>
+
+
+            <button
+                onclick="resetAnalysis()"
+                class="new-analysis">
+
+                Analyze Another Specimen
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <footer class="lab-footer">
+
+        KUZHI.AI carries no nutritional, structural,
+        scientific or legal authority.
+
+        <br>
+
+        Runs entirely in your browser.
+
+    </footer>
+
+</section>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
